@@ -1,0 +1,13 @@
+<html>
+  <h2>WELCOME INDEX</h2>
+  <h3>MEETUP APP</h3>
+  <p>Choose Your CSV FILE</p>
+  <p>It must use the following format.</p>
+  <p>First Name, Last Name, Group Name, Role in Group</p>
+
+<%= form_for @user do |f| %>
+  <%= f.file_field :users_test %>
+  <%= f.submit "Add User/s to Database" %>
+<% end %>
+
+</html>
