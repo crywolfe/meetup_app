@@ -21,9 +21,9 @@
 
 <% @groups.each do |group, user| %>
   <tr>
-    
+
     <td><%= link_to group.name, group %></td>
-    <td><%= link_to group.name, group %></td>
+    <td><%= group.users.find_by(:group_name => group.name)[:first_name] %> <%= group.users.find_by(:group_name => group.name)[:last_name] %></td>
 
   </tr>
 <% end %>
