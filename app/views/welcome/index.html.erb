@@ -21,7 +21,7 @@
 
 <% @groups.each do |group, user| %>
   <tr>
-<!-- create a method instead to clean this up -->
+<!-- create a method in model to call instead to clean this up -->
     <%# binding.pry %>
     <% if group.users.find_by(:role =>"Organizer") != nil %>
     <td><%= link_to group.name, group %></td>
