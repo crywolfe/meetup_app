@@ -1,0 +1,29 @@
+<h1>CREATE</h1>
+<p>
+  You've successfully added the following CSV data to the database.
+</p>
+<h2>Users</h2>
+<% @users.each do |user|  %>
+<li><%= user.first_name  %> <%= user.last_name  %></li>
+<%   %>
+<% end  %>
+
+<h2>Group</h2>
+<% @groups.each do |group|  %>
+<li><%= group.name  %></li>
+<%   %>
+<% end  %>
+
+<h2>User Associated with Group</h2>
+<% @users.each do |user|  %>
+<li><%= user.first_name  %> <%= user.last_name  %> <%= user.group_name  %></li>
+<%   %>
+<% end  %>
+
+<h2>Organizer</h2>
+
+<% @users.each do |user| %>
+  <% if user.role == "Organizer" %>
+    <li><%= user.first_name %> <%= user.last_name %></li>
+  <% end %>
+<% end %>

@@ -5,9 +5,31 @@
   <p>It must use the following format.</p>
   <p>First Name, Last Name, Group Name, Role in Group</p>
 
-<%= form_for @user do |f| %>
-  <%= f.file_field :users_test %>
-  <%= f.submit "Add User/s to Database" %>
+  <%= form_for @user do |f| %>
+    <%= f.file_field :users_test %>
+    <%= f.submit "Add User/s to Database" %>
+  <% end %>
+
+  <h3>List of Current Groups with the Organizer(s) for each Group</h3>
+  <h4>Click on Group to display its Users and their Roles</h4>
+
+<table>
+  <tr>
+    <th>Group</th>
+    <th>Organizer</th>
+  </tr>
+
+<% @groups.each do |group, user| %>
+  <tr>
+    
+    <td><%= link_to group.name, group %></td>
+    <td><%= link_to group.name, group %></td>
+
+  </tr>
 <% end %>
+</table>
+
+<br>
+
 
 </html>

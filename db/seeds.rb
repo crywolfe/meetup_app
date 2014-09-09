@@ -5,25 +5,3 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-test_user = User.create(
-  first_name: "Gerald",
-  last_name: "Wolfe",
-  role: "Organizer",
-  group_name: "Fun"
-
-)
-test_user = User.create(
-  first_name: "Gerald",
-  last_name: "Wolfe",
-  role: "Organizer",
-  group_name: "Happy"
-
-)
-
-test_group = Group.create(
-  name: "Fun"
-)
-test_group = Group.create(
-  name: "Happy"
-)

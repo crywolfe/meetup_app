@@ -1,12 +1,20 @@
 class UsersController < ApplicationController
+  require 'csv'
 
   def index
     @users = User.all
+    binding.pry
+
   end
 
   def create
+    @users = User.all
+    @groups = Group.all
+
     @user = User.new(user_params)
-    binding.pry
+    @file_name =(params[:user][:users_test].original_filename)
+    @user.read_csv(@file_name)
+    @user.database_insert
 
     if @user.save
       # a ok
@@ -41,7 +49,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :role)
+    params.require(:user).permit(:first_name, :last_name, :role, :group_name, :group_ids => [])
   end
 
 

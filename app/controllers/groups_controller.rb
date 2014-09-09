@@ -4,12 +4,7 @@ class GroupsController < ApplicationController
     binding.pry
     # @groups_users = GroupsUsers.all
 
-    # Display Organizer(s)
-    <% @groups.each do |group| %>
-      <% if group.role == "organizer" %>
-        <%= group.groups_users.role %>
-        <% end %>
-    <% end %>
+
 
   end
 
@@ -29,6 +24,8 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @groups = Group.includes(:groups_users).all
+    @users = User.all
     @group = Group.find(params[:id])
     # Display Users and Roles
   end
@@ -49,7 +46,7 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:first_name, :last_name, :role)
+    params.require(:group).permit(:name, :user_ids => [])
   end
 
 end
