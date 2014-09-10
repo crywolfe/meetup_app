@@ -41,7 +41,6 @@ class GroupsController < ApplicationController
     @users = User.all
     @group.update(:name => params[:group][:name])
     @users.each do |user|
-      binding.pry
       if user.group_name == @group_name
         user.update(:group_name => params[:group][:name])
       end
@@ -56,7 +55,6 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     @group = Group.find(params[:id])
     @group.destroy
     redirect_to(root_path)
