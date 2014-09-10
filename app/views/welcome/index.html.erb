@@ -19,10 +19,8 @@
     <th>Organizer</th>
   </tr>
 
-<% @groups.each do |group, user| %>
+<% @groups.each do |group| %>
   <tr>
-<!-- create a method in model to call instead to clean this up -->
-    <%# binding.pry %>
     <% if group.users.find_by(:role =>"Organizer") != nil %>
     <td><%= link_to group.name, group %></td>
     <td><%= group.users.find_by(:group_name => group.name)[:first_name] %> <%= group.users.find_by(:group_name => group.name)[:last_name] %></td>

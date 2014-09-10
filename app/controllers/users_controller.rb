@@ -3,8 +3,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    binding.pry
-
   end
 
   def create
@@ -25,9 +23,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def new
-  end
-
   def show
     @user = User.find(params[:id])
   end
@@ -35,9 +30,12 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect
+      flash[:notice] = "Updated"
+
+      redirect_to root_path
     else
-      render
+      flash[:error] = "You made a mistake.  Please enter info again."
+			render(:edit)
     end
   end
 

@@ -1,11 +1,6 @@
 class GroupsController < ApplicationController
   def index
     @groups = Group.includes(:groups_users).all
-    binding.pry
-    # @groups_users = GroupsUsers.all
-
-
-
   end
 
   def create
@@ -24,19 +19,38 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @groups = Group.includes(:groups_users).all
+    # @groups = Group.includes(:groups_users).all
     @users = User.all
     @group = Group.find(params[:id])
-    # Display Users and Roles
+  end
+
+  def edit
+    @group = Group.find(params[:id])
+    @group_user = @group.users.find(params[:id])
+    # if @group.update(group_params)
+    #   # redirect
+    # else
+    #   # render
+    # end
   end
 
   def update
+
     @group = Group.find(params[:id])
-    if @group.update(group_params)
-      # redirect
-    else
-      # render
+    @users = User.all
+    @group.update(:name => params[:group][:name])
+    @users.each do |user|
+      binding.pry
+      if user.group_name == @group.name
+        user.update(:group_name => params[:group][:name])
+      end
     end
+
+    # if @group.update(group_params)
+    #   # redirect
+    # else
+    #   # render
+    # end
   end
 
   def destroy
