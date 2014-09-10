@@ -14,13 +14,6 @@ class UsersController < ApplicationController
     @user.read_csv(@file_name)
     @user.database_insert
 
-    if @user.save
-      # a ok
-      # redirect
-    else
-      #not
-      # render
-    end
   end
 
   def show
@@ -37,12 +30,6 @@ class UsersController < ApplicationController
       flash[:error] = "You made a mistake.  Please enter info again."
 			render(:edit)
     end
-  end
-
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-
   end
 
   private
